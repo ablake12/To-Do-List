@@ -5,8 +5,5 @@ Hi! This project will be intended for a user to create and manage a to-do list. 
 ## Prerequisites
 - Python 3.8 or up
 ## Usage
-1. Open terminal and navigate to the To-Do List directory
-2. Run the requirements.txt
-- pip install -r requirements.txt
-3. Run the program
-- python3 src/main.py
+Open terminal run the program in the To-Do List directory:
+`python3 src/main.py`
