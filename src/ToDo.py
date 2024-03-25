@@ -150,7 +150,7 @@ class ToDoList:
             error_window = tk.Toplevel(self.window)
             frame = tk.Frame(error_window)
             frame.pack()
-            error_msg = tk.Label(frame, text = 'Please enter a date in mm/dd/yyyy format')
+            error_msg = tk.Label(frame, text = 'Please enter a valid date in mm/dd/yyyy format')
             error_msg.pack()
             ok_frame = tk.Frame(error_window)
             ok_frame.pack()
@@ -234,13 +234,14 @@ class ToDoList:
                 ok_frame.pack(side=tk.BOTTOM)
                 ok = tk.Button(ok_frame, text="Ok", command=alert_window.destroy)
                 ok.pack(side="bottom")
+            bullet_point = "\u2022"
             if len(due_soon) > 0:
                 alert_display = ""
                 for i in due_soon:
                     if i == due_soon[-1]:
-                        alert_display += f"- {i}"
+                        alert_display += f"{bullet_point} {i}"
                     else:
-                        alert_display += f"- {i}\n"
+                        alert_display += f"{bullet_point} {i}\n"
                 soon_frame = tk.Frame(alert_window)
                 soon_frame.pack(side=tk.TOP)
                 if len(due_soon) == 1:
@@ -255,9 +256,9 @@ class ToDoList:
                 alert_display = ""
                 for i in past_due:
                     if i == past_due[-1]:
-                        alert_display += f"- {i}"
+                        alert_display += f"{bullet_point} {i}"
                     else:
-                        alert_display += f"- {i}\n"
+                        alert_display += f"{bullet_point} {i}\n"
                 past_frame = tk.Frame(alert_window)
                 past_frame.pack(side=tk.TOP)
                 if len(past_due) == 1:
@@ -272,9 +273,9 @@ class ToDoList:
                 alert_display = ""
                 for i in due_today:
                     if i == due_today[-1]:
-                        alert_display += f"- {i}"
+                        alert_display += f"{bullet_point} {i}"
                     else:
-                        alert_display += f"- {i}\n"
+                        alert_display += f"{bullet_point} {i}\n"
                 today_frame = tk.Frame(alert_window)
                 today_frame.pack(side=tk.TOP)
                 if len(due_today) == 1:
