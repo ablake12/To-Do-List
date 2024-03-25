@@ -35,6 +35,9 @@ class ToDoList:
         self.exit_button = tk.Button(self.exit_frame, text="Exit", activeforeground= "blue", command=self.window.destroy)
         self.exit_button.pack(side=tk.LEFT, padx=10)
 
+        self.generate_button = tk.Button(self.exit_frame, text="Export List", activeforeground= "blue", command=self.export_to_file)
+        self.generate_button.pack(side=tk.LEFT, padx=10)
+
         self.delete_button = tk.Button(self.exit_frame, text="Delete List", activeforeground= "blue", command=lambda: self.delete_checklist_window())
         self.delete_button.pack(side=tk.LEFT, padx=10)
 
@@ -284,7 +287,8 @@ class ToDoList:
                 task_label.pack()
         except Exception:
             print("Could not display alert window")
-
+    def export_to_file(self):
+        print(self.task_status)
     def get_existing_list(self):
         try:
             with open(self.json_path, 'r') as in_file:
