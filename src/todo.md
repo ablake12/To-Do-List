@@ -1,3 +1,0 @@
-- [ ] Task 1
-- [x] Task 2 (Due Date: 03/25/2024)
-- [ ] Task 3
