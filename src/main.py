@@ -35,7 +35,7 @@ class ToDoList:
         self.exit_button = tk.Button(self.exit_frame, text="Exit", activeforeground= "blue", command=self.window.destroy)
         self.exit_button.pack(side=tk.LEFT, padx=10)
 
-        self.generate_button = tk.Button(self.exit_frame, text="Export List", activeforeground= "blue", command=self.export_to_file)
+        self.generate_button = tk.Button(self.exit_frame, text="Export List", activeforeground= "blue", command=self.get_file_name)
         self.generate_button.pack(side=tk.LEFT, padx=10)
 
         self.delete_button = tk.Button(self.exit_frame, text="Delete List", activeforeground= "blue", command=lambda: self.delete_checklist_window())
@@ -287,8 +287,51 @@ class ToDoList:
                 task_label.pack()
         except Exception:
             print("Could not display alert window")
-    def export_to_file(self):
-        print(self.task_status)
+    def export_to_file(self, entry, file_window):
+        file_input = entry.get()
+        if file_input:
+            file_name = f"{file_input}.md"
+            msg_frame = tk.Frame(file_window)
+            msg_frame.pack()
+            if len(self.task_status) == 0:
+                msg_label = tk.Label(msg_frame, text = "This checklist can not be exported because it is empty")
+                msg_label.pack()
+            else:
+                with open(f"docs/{file_name}", "w") as out_file:
+                    for task in self.task_status:
+                        if len(self.task_status[task]) > 1:
+                            status = self.task_status[task][0]
+                            due_date = self.task_status[task][1]
+                            if status == 0:
+                                out_file.write(f"- [ ] {task} (Due Date: {due_date})\n")
+                            else:
+                                out_file.write(f"- [x] {task} (Due Date: {due_date})\n")
+                        else:
+                            status = self.task_status[task][0]
+                            if status == 0:
+                                out_file.write(f"- [ ] {task}\n")
+                            else:
+                                out_file.write(f"- [x] {task}\n")     
+                msg_label = tk.Label(msg_frame, text = f"{file_name} has been created in the docs directory.")
+                msg_label.pack()
+
+    def get_file_name(self):
+        try:
+            file_window = tk.Toplevel(self.window)
+            file_frame = tk.Frame(file_window)
+            file_frame.pack()
+            exit_file_frame = tk.Frame(file_window)
+            exit_file_frame.pack()
+            file_label = tk.Label(file_frame, text = "Please enter a file name for your file: ")
+            file_label.pack()
+            entry = tk.Entry(file_frame)
+            entry.pack(fill=tk.X, side=tk.LEFT)
+            enter_button = tk.Button(file_frame, text="Enter", activeforeground= "blue", command=lambda: self.export_to_file(entry, file_window))
+            enter_button.pack()
+            exit_button = tk.Button(exit_file_frame, text="Exit", activeforeground= "blue", command=file_window.destroy)
+            exit_button.pack(side=tk.LEFT, padx=10)
+        except Exception as error:
+            print(f"Error exporting list to a markdown file. Error was: {error}")
     def get_existing_list(self):
         try:
             with open(self.json_path, 'r') as in_file:
