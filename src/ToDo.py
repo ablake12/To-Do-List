@@ -58,7 +58,7 @@ class ToDoList:
                     task_frame.pack()
                     checkbox = tk.Checkbutton(task_frame, text=task_input, variable=task_value, onvalue=1, offvalue=0, command=lambda name=task_input, val=task_value: self.mark_task(name, val))
                     checkbox.pack(side=tk.LEFT, padx=15)
-                    delete_button = tk.Button(task_frame, text="Delete Task", activeforeground= "blue", command=lambda: self.delete_confirmation(task_input))
+                    delete_button = tk.Button(task_frame, text="Delete Task", activeforeground= "blue", command=lambda name=task_input: self.delete_confirmation(name))
                     delete_button.pack(side=tk.RIGHT, fill=tk.X)
                     due_date_entry = tk.Entry(task_frame)  # New entry for due dates
                     due_date_entry.pack(fill=tk.X, side=tk.LEFT)
@@ -84,7 +84,7 @@ class ToDoList:
                 if self.task_status[task_name][0] == 1: # have the box already checked
                     checkbox.select()
                 checkbox.pack(side=tk.LEFT, padx=15)
-                delete_button = tk.Button(task_frame, text="Delete Task", activeforeground= "blue", command=lambda: self.delete_confirmation(task_name))
+                delete_button = tk.Button(task_frame, text="Delete Task", activeforeground= "blue", command=lambda name=task_name: self.delete_confirmation(name))
                 delete_button.pack(side=tk.RIGHT, fill=tk.X, expand=True)
                 if len(self.task_status[task_name]) > 1: # if task already has a due date 
                     current_due_date = tk.Label(task_frame, text = f'Due Date: {self.task_status[task_name][1]}')
