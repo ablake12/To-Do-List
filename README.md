@@ -9,3 +9,5 @@ Open terminal and run the program in the To-Do List directory (your current work
 ```bash
 python3 src/main.py
 ```
+Run in Replit [here](https://replit.com/@alanzablake1/To-Do-List)
+* Follow same instructions as local run
