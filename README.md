@@ -5,11 +5,12 @@ Hi! This project will be intended for a user to create and manage a to-do list. 
 ## Prerequisites
 - Python 3.8+
 ## Usage
-For a local run, open the terminal and run the program in the To-Do List directory (your current working directory):
+Locally:
+* Open the terminal and run the program in the To-Do List directory (your current working directory):
 ```bash
 python3 src/main.py
 ```
-Run in Replit [here](https://replit.com/@alanzablake1/To-Do-List)
+Run in Replit [here](https://replit.com/@alanzablake1/To-Do-List):
 * Run program in the shell in the in the To-Do List directory
 ```bash
 python3 src/main.py
