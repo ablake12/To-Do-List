@@ -5,7 +5,7 @@ Hi! This project will be intended for a user to create and manage a to-do list. 
 ## Prerequisites
 - Python 3.8+
 ## Usage
-Open terminal and run the program in the To-Do List directory (your current working directory):
+For a local run, open the terminal and run the program in the To-Do List directory (your current working directory):
 ```bash
 python3 src/main.py
 ```
