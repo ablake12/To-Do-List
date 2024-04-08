@@ -11,7 +11,7 @@ Locally:
 python3 src/main.py
 ```
 Run in Replit [here](https://replit.com/@alanzablake1/To-Do-List):
-* Run program in the shell in the in the To-Do List directory
+* Fork this project and run program in the shell in the in the To-Do List directory
 ```bash
 python3 src/main.py
 ```
