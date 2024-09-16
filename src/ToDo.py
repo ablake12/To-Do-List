@@ -7,7 +7,7 @@ class ToDoList:
     def __init__(self, window):
         self.window = window
         self.window.title("To Do List")
-        self.json_path = os.path.join("data", "list.json")
+        self.json_path = os.path.join(os.getcwd(), "data", "list.json")
         self.tasks = {}
 
         self.entry = tk.Entry(window)
@@ -298,7 +298,8 @@ class ToDoList:
                 msg_label = tk.Label(msg_frame, text = "This checklist can not be exported because it is empty")
                 msg_label.pack()
             else:
-                with open(f"docs/{file_name}", "w") as out_file:
+                export_path = os.path.join(os.getcwd(), f"docs/{file_name}")
+                with open(export_path, "w") as out_file:
                     for task in self.task_status:
                         if len(self.task_status[task]) > 1:
                             status = self.task_status[task][0]
