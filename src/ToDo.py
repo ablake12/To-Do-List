@@ -339,7 +339,6 @@ class ToDoList:
             with open(self.json_path, 'r') as in_file:
                 self.task_status = json.load(in_file)
             self.add_existing_tasks()
-            # self.due_date_alert()
         except json.decoder.JSONDecodeError:# data is showing up as empty
             print("Data does not exist or can not be read. Creating new to do list.")
             self.task_status = {}
